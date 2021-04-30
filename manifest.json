@@ -8,7 +8,7 @@
                 "https://schalter.asvz.ch/*"
             ],
             "js": [
-                "ics.deps.min.js",
+                "ics.deps.js",
                 "calendarExporter.js"
             ]
         }

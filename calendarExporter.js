@@ -26,6 +26,10 @@ let addEvents = function () {
         let toDate = tr.children[columnIndices["date-to"]].textContent.split(".");
         let toTime = tr.children[columnIndices["time-to"]].textContent.split(":");
         let to = new Date(toDate[2], toDate[1] - 1, toDate[0], toTime[0], toTime[1]);
+        console.log(fromTime)
+        console.log(from)
+        console.log(toTime);
+        console.log(to);
         calendar.addEvent(title,
             "", // no details, description
             location,
@@ -33,7 +37,7 @@ let addEvents = function () {
             to);
 
     }
-    console.log(calendar.events)
+    console.log(calendar.events())
     return calendar.events().length;
 
 
@@ -64,7 +68,11 @@ chrome.runtime.onMessage.addListener(
         }
         else if(message == "reset") {
             reset();
+            response(calendar.events().length);  
         }
+        else if(message == "total") {
+            response(calendar.events().length);  
+      }
 
         return true;
     }
